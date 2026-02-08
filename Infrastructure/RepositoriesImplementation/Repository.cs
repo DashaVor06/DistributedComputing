@@ -29,5 +29,15 @@ namespace Infrastructure.RepositoriesImplementation
         {
             _entities.Remove(id);
         }
+        public bool Exists(int id)
+        {
+            if (_entities.ContainsKey(id))
+                return true;
+            return false;
+        }
+        public int GetLastId()
+        {
+            return _entities.Keys.DefaultIfEmpty(1).Max();
+        }
     }
 }

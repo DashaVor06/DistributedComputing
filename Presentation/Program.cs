@@ -1,15 +1,24 @@
+using BusinessLogic.DTO.Request;
+using BusinessLogic.DTO.Response;
+using BusinessLogic.Profiles;
+using BusinessLogic.Servicies;
+using DataAccess.Models;
+using DataAccess.Repositories;
+using Infrastructure.RepositoriesImplementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<IRepository<Creator>, InMemoryRepository<Creator>>();
+builder.Services.AddScoped<IBaseService<CreatorRequestTo, CreatorResponseTo>, CreatorService>();
+
+builder.Services.AddAutoMapper(typeof(UserProfile));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

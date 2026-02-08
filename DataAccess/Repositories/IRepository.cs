@@ -6,6 +6,8 @@
         TEntity GetById(int id);
         TEntity Create(TEntity entity);
         TEntity Update(TEntity entity);
-        void Delete(int id);       
+        void Delete(int id);    
+        bool Exists(int id);
+        int GetLastId();
     }
 }
