@@ -27,7 +27,7 @@ namespace Presentation.Controllers
             CreatorResponseTo? response = _creatorService.GetById(id);
             if (response != null)
             {
-                return Ok();
+                return Ok(response);
             }
             else
             {

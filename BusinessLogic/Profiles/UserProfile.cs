@@ -9,7 +9,8 @@ namespace BusinessLogic.Profiles
     {
         public UserProfile() 
         {
-            CreateMap<CreatorRequestTo, Creator>();
+            CreateMap<CreatorRequestTo, Creator>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<Creator, CreatorResponseTo>(); 
 
             CreateMap<MarkRequestTo, Mark>();

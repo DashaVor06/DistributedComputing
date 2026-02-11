@@ -37,7 +37,7 @@ namespace Infrastructure.RepositoriesImplementation
         }
         public int GetLastId()
         {
-            return _entities.Keys.DefaultIfEmpty(1).Max();
+            return _entities.Keys.DefaultIfEmpty(0).Max();
         }
     }
 }

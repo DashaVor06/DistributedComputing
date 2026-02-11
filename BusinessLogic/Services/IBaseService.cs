@@ -3,7 +3,7 @@ using DataAccess.Repositories;
 
 namespace BusinessLogic.Servicies
 {
-    public interface IBaseService<TEntityRequest, TEntityResponse> where TEntityRequest : BaseEntity
+    public interface IBaseService<TEntityRequest, TEntityResponse> where TEntityRequest : class
                                                                    where TEntityResponse : BaseEntity
     {
         List<TEntityResponse> GetAll();

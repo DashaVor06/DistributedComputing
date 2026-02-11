@@ -31,10 +31,11 @@ namespace BusinessLogic.Servicies
             return null;
         }
         public CreatorResponseTo Create(CreatorRequestTo entity)
-        {
-            entity.Id = _repository.GetLastId() + 1;
-            _repository.Create(_mapper.Map<Creator>(entity));
-            return _mapper.Map<CreatorResponseTo>(entity);
+        { 
+            Creator creator = _mapper.Map<Creator>(entity);
+            creator.Id = _repository.GetLastId() + 1;
+            _repository.Create(creator);
+            return _mapper.Map<CreatorResponseTo>(creator);
         }
         public CreatorResponseTo? Update(CreatorRequestTo entity)
         {

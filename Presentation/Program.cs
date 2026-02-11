@@ -9,7 +9,7 @@ using Infrastructure.RepositoriesImplementation;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<IRepository<Creator>, InMemoryRepository<Creator>>();
+builder.Services.AddSingleton<IRepository<Creator>, InMemoryRepository<Creator>>();
 builder.Services.AddScoped<IBaseService<CreatorRequestTo, CreatorResponseTo>, CreatorService>();
 
 builder.Services.AddAutoMapper(typeof(UserProfile));
