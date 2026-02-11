@@ -4,7 +4,7 @@ using DataAccess.Repositories;
 namespace BusinessLogic.Servicies
 {
     public interface IBaseService<TEntityRequest, TEntityResponse> where TEntityRequest : class
-                                                                   where TEntityResponse : BaseEntity
+                                                                   where TEntityResponse : class
     {
         List<TEntityResponse> GetAll();
         TEntityResponse? GetById(int id);

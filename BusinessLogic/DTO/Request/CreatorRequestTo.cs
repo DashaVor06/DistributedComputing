@@ -3,7 +3,7 @@ using DataAccess.Models;
 
 namespace BusinessLogic.DTO.Request
 {
-    public class CreatorRequestTo
+    public class CreatorRequestTo : BaseEntity
     {
         [StringLength(64, MinimumLength = 2, ErrorMessage = "Login should be from 2 to 64 symbols")]
         public string Login { get; set; } = string.Empty;

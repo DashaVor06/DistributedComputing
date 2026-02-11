@@ -7,10 +7,10 @@ namespace Presentation.Controllers
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class CreatorController : ControllerBase
+    public class CreatorsController : ControllerBase
     {
         private IBaseService<CreatorRequestTo, CreatorResponseTo> _creatorService;
-        public CreatorController(IBaseService<CreatorRequestTo, CreatorResponseTo> creatorService)
+        public CreatorsController(IBaseService<CreatorRequestTo, CreatorResponseTo> creatorService)
         {
             _creatorService = creatorService;
         }
@@ -42,13 +42,13 @@ namespace Presentation.Controllers
             return Created($"{response.Id}", response);
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<CreatorResponseTo> Put(int id, [FromBody] CreatorRequestTo entity)
+        [HttpPut]
+        public ActionResult<CreatorResponseTo> Put([FromBody] CreatorRequestTo entity)
         {
             CreatorResponseTo? response = _creatorService.Update(entity);
             if (response != null)
             {
-                return Ok();
+                return Ok(response);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace Presentation.Controllers
         public ActionResult Delete(int id)
         {
             bool wasFound = _creatorService.DeleteById(id);
-            if (!wasFound)
+            if (wasFound)
             {
                 return NoContent();
             }

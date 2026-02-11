@@ -39,9 +39,10 @@ namespace BusinessLogic.Servicies
         }
         public CreatorResponseTo? Update(CreatorRequestTo entity)
         {
-            if (_repository.Exists(_mapper.Map<Creator>(entity).Id)){
-                _repository.Update(_mapper.Map<Creator>(entity));
-                return _mapper.Map<CreatorResponseTo>(entity);
+            var creator = _mapper.Map<Creator>(entity);
+            if (_repository.Exists(creator.Id)){
+                _repository.Update(creator);
+                return _mapper.Map<CreatorResponseTo>(creator);
             }
             return null;
         }
